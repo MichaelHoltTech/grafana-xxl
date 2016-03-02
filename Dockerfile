@@ -10,7 +10,7 @@ CMD ["/sbin/my_init"]
 RUN mkdir /etc/service/grafana
 ADD grafana.sh /etc/service/grafana/run
 
-RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
+RUN chmod +x /etc/service/grafana/run && apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 
 ### Install Grafana ###
 RUN  apt-get -y --no-install-recommends install libfontconfig curl ca-certificates git && \

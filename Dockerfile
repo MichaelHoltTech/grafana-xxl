@@ -16,7 +16,7 @@ RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 RUN  apt-get -y --no-install-recommends install libfontconfig curl ca-certificates git && \
   curl https://grafanarel.s3.amazonaws.com/builds/grafana_${GRAFANA_VERSION}_amd64.deb > /tmp/grafana.deb && \
   dpkg -i /tmp/grafana.deb && \
-  rm /tmp/grafana.deb && \
+  rm /tmp/grafana.deb
 
 ### Install Zabbix Plugin ### && \
 RUN \

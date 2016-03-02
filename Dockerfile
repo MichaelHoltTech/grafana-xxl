@@ -1,4 +1,4 @@
-FROM phusion/baseimage-docker:0.9.15
+FROM phusion/baseimage:0.9.15
 MAINTAINER Michael Holt michael@mholt.tech
 
 #ENV Variables

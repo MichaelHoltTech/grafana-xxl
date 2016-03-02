@@ -3,7 +3,7 @@
 Thanks to [Jan Garaj](https://github.com/monitoringartist) for the original work on this.  This is based on his [Grafana-xxl](https://github.com/monitoringartist/grafana-xxl) image but updated for running Grafana 3.0 and using Phusion's Ubuntu Baseimage.
 
 
-# Running your Grafana XXL Docker image
+# Running your Grafana-Zabbix Docker image
 
 Start your image binding the external port 3000:
 
@@ -11,10 +11,10 @@ Start your image binding the external port 3000:
 
 Try it out, default admin user is admin/admin.
 
-## Grafana XXL with persistent storage (recommended)
+## Grafana-Zabbix with persistent storage (recommended)
 
-    # create /var/lib/grafana as persistent volume storage
-    docker run -d -v /var/lib/grafana --name grafana-storage busybox:latest
+    # create /data/grafana/var /data/grafana/etc /data/grafana/log as persistent volume storage
+    docker run -d -v /data/grafana/lib:/var/lib/grafana -v /data/grafana/etc:/etc/grafana -v /data/grafana/log:/var/log/grafana --name grafana-storage busybox:latest
 
     # start grafana
     docker run \
@@ -22,18 +22,10 @@ Try it out, default admin user is admin/admin.
       -p 3000:3000 \
       --name grafana \
       --volumes-from grafana-storage \
+      -e "GF_SECURITY_ADMIN_PASSWORD=secret" \
       michaelholttech/grafana-zabbix-3.0
 
-## Running specific version of Grafana XXL
-
-    # specify right tag, e.g. 2.6.0 - see Docker Hub for available tags
-    docker run \
-      -d \
-      -p 3000:3000 \
-      --name grafana \
-      michaelholttech/grafana-zabbix-3.0:2.6.0
-
-## Configuring your Grafana container
+## Configuring your Grafana-Zabbix container
 
 All options defined in conf/grafana.ini can be overriden using environment
 variables, for example:

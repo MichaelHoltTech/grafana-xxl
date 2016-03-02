@@ -1,4 +1,0 @@
-grafana-xxl:
-  image: monitoringartist/grafana-xxl:latest
-  ports:
-    - "3000:3000"

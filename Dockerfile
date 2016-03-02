@@ -19,7 +19,7 @@ RUN \
   chmod +x /usr/sbin/gosu
   ### zabbix ### && \
 RUN \
-  git clone -b grafana-3.0 https://github.com/alexanderzobnin/grafana-zabbix /tmp/grafana-zabbix && \
+  git clone -b develop https://github.com/alexanderzobnin/grafana-zabbix /tmp/grafana-zabbix && \
   mv /tmp/grafana-zabbix/plugins/* /usr/share/grafana/public/app/plugins/ && \
   rm -rf /tmp/grafana-zabbix/ && \
   sleep 10

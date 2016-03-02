@@ -16,12 +16,14 @@ RUN \
   dpkg -i /tmp/grafana.deb && \
   rm /tmp/grafana.deb && \
   curl -L https://github.com/tianon/gosu/releases/download/1.5/gosu-amd64 > /usr/sbin/gosu && \
-  chmod +x /usr/sbin/gosu && \
+  chmod +x /usr/sbin/gosu
   ### zabbix ### && \
+RUN \
   git clone -b grafana-3.0 https://github.com/alexanderzobnin/grafana-zabbix /tmp/grafana-zabbix && \
-  mv /tmp/grafana-zabbix/zabbix/plugins/* /usr/share/grafana/public/app/plugins/ && \
+  mv /tmp/grafana-zabbix/plugins/* /usr/share/grafana/public/app/plugins/ && \
   rm -rf /tmp/grafana-zabbix/ && \
-  sleep 10 && \
+  sleep 10
+RUN \
   apt-get update && \
   chmod +x /run.sh && \
   apt-get remove -y curl git && \
